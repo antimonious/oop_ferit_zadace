@@ -25,13 +25,13 @@ namespace Weather_library
 
         public Weather(double temperature, double humidity, double windSpeed){
             this.temperature = temperature;
-            this.humidity = humidity;
+            this.humidity = humidity / 100;
             this.windSpeed = windSpeed;
         }
 
         public void SetTemperature(double temperature) { this.temperature = temperature; }
         public void SetWindSpeed(double windSpeed) { this.windSpeed = windSpeed; }
-        public void SetHumidity(double humidity) { this.humidity = humidity; }
+        public void SetHumidity(double humidity) { this.humidity = humidity / 100; }
 
         public double GetTemperature() { return this.temperature; }
         public double GetWindSpeed() { return this.windSpeed; }
@@ -50,14 +50,6 @@ namespace Weather_library
                 return 13.12 + 0.6215 * temperature - 11.37 * Math.Pow(windSpeed, 0.16) +
                     0.3965 * temperature * Math.Pow(windSpeed, 0.16);
             else return 0;
-        }
-
-        static public Weather FindWeatherWithLargestWindchill(Weather[] weathers){
-            Weather maxWindChillWeather = weathers[0];
-            foreach (Weather tempWeather in weathers)
-                if (tempWeather.CalculateWindChill() > maxWindChillWeather.CalculateWindChill())
-                    maxWindChillWeather = tempWeather;
-            return maxWindChillWeather;
         }
     }
 }
