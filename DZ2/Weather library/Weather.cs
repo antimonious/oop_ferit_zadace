@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Weather_library
-{
-    public class Weather
-    {
+namespace Weather_library{
+
+    public class Weather{
+
         private const double c1 = -8.78469475556;
         private const double c2 = 1.61139411;
         private const double c3 = 2.33854883889;
@@ -17,11 +17,7 @@ namespace Weather_library
         private double humidity;
         private double windSpeed;
 
-        public Weather(){
-            temperature = 0.0;
-            humidity = 0.0;
-            windSpeed = 0.0;
-        }
+        public Weather() : this(0.0, 0.0, 0.0) { }
 
         public Weather(double temperature, double humidity, double windSpeed){
             this.temperature = temperature;
