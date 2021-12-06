@@ -31,5 +31,9 @@ namespace Weather_library{
             if (leftForecast is null) return rightForecast is null;
             return leftForecast.Weather.GetTemperature() < rightForecast.Weather.GetTemperature();
         }
+        public override string ToString()
+        {
+            return $"{this.dateTime.ToString()}: {this.weather.ToString()}";
+        }
     }
 }

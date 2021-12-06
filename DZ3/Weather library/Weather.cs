@@ -40,12 +40,15 @@ namespace Weather_library{
                 c8 * temperature * Math.Pow(humidity, 2) +
                 c9 * Math.Pow(temperature, 2) * Math.Pow(humidity, 2);
         }
-
         public double CalculateWindChill(){
             if (temperature <= 10 && windSpeed > 4.8)
                 return 13.12 + 0.6215 * temperature - 11.37 * Math.Pow(windSpeed, 0.16) +
                     0.3965 * temperature * Math.Pow(windSpeed, 0.16);
             else return 0;
+        }
+        public override string ToString()
+        {
+            return $"T={this.temperature}°C, w={this.windSpeed}km/h, h={this.humidity * 100}%";
         }
     }
 }

@@ -24,5 +24,12 @@ namespace Weather_library{
         }
 
         public DailyForecast this[int i] => this.dailyForecasts[i];
+        public override string ToString()
+        {
+            string temp = "";
+            foreach (DailyForecast dailyForecast in this.dailyForecasts)
+                temp += $"{dailyForecast.ToString()}\n";
+            return temp;
+        }
     }
 }
