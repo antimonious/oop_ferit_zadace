@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DZ3\\Weather app",
+    "\\DZ5",
+    "\\DZ5\\WeatherApp"
   ],
-  "SelectedNode": "\\Weather.sln (DZ4\\Weather.sln)",
+  "SelectedNode": "\\DZ5\\Weather.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,38 @@
+﻿<fw:AcrylicWindow x:Class="WeatherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        xmlns:local="clr-namespace:WeatherApp"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        mc:Ignorable="d"
+        Title="weather.io" Height="600" Width="800"
+        TintColor="#3E4D6C"
+        AcrylicWindowStyle="NoIcon">
+    <fw:AcrylicWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </fw:AcrylicWindow.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="1" Grid.Row="1" Source="C:\Users\leotu\OneDrive\Desktop\IMG_20210624_191622_797-01.jpeg"></Image>
+        <Rectangle Fill="{fw:AcrylicBrush grid}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4"></Rectangle>
+    </Grid>
+        <!--<m:Map x:Name="myMap" CredentialsProvider="z7AbpdoLBt8nqpYryo2N~c6tlIiRrlFg76IlH-QcK4A~AsqFyXRBcegV2vSPSY1a4u6HfUfV9Aas4_YmG1NIrMu-TszR0F1PpRFHjfXGrWSD" Mode="Aerial"/>-->
+</fw:AcrylicWindow>

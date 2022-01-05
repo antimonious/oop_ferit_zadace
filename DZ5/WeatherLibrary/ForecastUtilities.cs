@@ -13,9 +13,9 @@ namespace Weather_library{
         }
         public static DailyForecast Parse(string dailyForecast){
             string[] data = dailyForecast.Split(',');
-            if (data[1].Contains('.')) data[1] = data[1].Replace('.', ',');
-            if (data[2].Contains('.')) data[2] = data[2].Replace('.', ',');
-            if (data[3].Contains('.')) data[3] = data[3].Replace('.', ',');
+            if (data[1].Contains('.'.ToString())) data[1] = data[1].Replace('.', ',');
+            if (data[2].Contains('.'.ToString())) data[2] = data[2].Replace('.', ',');
+            if (data[3].Contains('.'.ToString())) data[3] = data[3].Replace('.', ',');
             return new DailyForecast(DateTime.Parse(data[0]),
                 new Weather(double.Parse(data[1]), double.Parse(data[3]), double.Parse(data[2])));
         }
