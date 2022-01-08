@@ -134,6 +134,12 @@
     <TypeScriptCompile Include="types\MicrosoftMaps\Modules\Traffic.d.ts" />
     <TypeScriptCompile Include="types\MicrosoftMaps\Modules\WellKnownText.d.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeatherLibrary\WeatherLibrary.csproj">
+      <Project>{4FADCBAF-F65B-4D00-92B0-539298D18B47}</Project>
+      <Name>WeatherLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

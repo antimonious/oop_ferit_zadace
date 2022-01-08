@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DZ3\\Weather app",
     "\\DZ5",
     "\\DZ5\\WeatherApp"
   ],
-  "SelectedNode": "\\DZ5\\Weather.sln",
+  "SelectedNode": "\\DZ5\\WeatherApp\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -8,31 +8,29 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="weather.io" Height="600" Width="800"
-        TintColor="#3E4D6C"
+        TintColor="#BBD9FA"
         AcrylicWindowStyle="NoIcon">
     <fw:AcrylicWindow.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
-        </ResourceDictionary>
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     </fw:AcrylicWindow.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Image Grid.Column="1" Grid.Row="1" Source="C:\Users\leotu\OneDrive\Desktop\IMG_20210624_191622_797-01.jpeg"></Image>
-        <Rectangle Fill="{fw:AcrylicBrush grid}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4"></Rectangle>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4" x:Name="grid" Background="White">
+            <Image x:Name="img" Stretch="Fill"></Image>
+        </Grid>
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{fw:AcrylicBrush grid, NoiseOpacity=0, TintOpacity=0.25, TintColor=#BBD9FA}" Opacity="0.75"></Rectangle>
+        <TextBlock Grid.Row="1" Padding="0" Margin="0" TextAlignment="Center" Grid.Column="1" Text="BRO" Foreground="Black" FontSize="100"></TextBlock>
     </Grid>
         <!--<m:Map x:Name="myMap" CredentialsProvider="z7AbpdoLBt8nqpYryo2N~c6tlIiRrlFg76IlH-QcK4A~AsqFyXRBcegV2vSPSY1a4u6HfUfV9Aas4_YmG1NIrMu-TszR0F1PpRFHjfXGrWSD" Mode="Aerial"/>-->
 </fw:AcrylicWindow>
