@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Weather_library
+namespace WeatherLibrary
 {
     public class FilePrinter : IPrinter
     {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Weather_library
+namespace WeatherLibrary
 {
     public class DailyForecastRepository : IEnumerable<DailyForecast>
     {

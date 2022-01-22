@@ -8,8 +8,8 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="weather.io" Height="600" Width="800"
-        TintColor="#BBD9FA"
-        AcrylicWindowStyle="NoIcon">
+        ExtendViewIntoTitleBar="True"
+        AcrylicWindowStyle="Normal">
     <fw:AcrylicWindow.Resources>
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     </fw:AcrylicWindow.Resources>
@@ -26,11 +26,38 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4" x:Name="grid" Background="White">
-            <Image x:Name="img" Stretch="Fill"></Image>
+        <Grid Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="4"
+              Grid.RowSpan="4"
+              x:Name="grid"
+              Background="White">
+            <Image x:Name="img" Stretch="Fill"/>
         </Grid>
-        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{fw:AcrylicBrush grid, NoiseOpacity=0, TintOpacity=0.25, TintColor=#BBD9FA}" Opacity="0.75"></Rectangle>
-        <TextBlock Grid.Row="1" Padding="0" Margin="0" TextAlignment="Center" Grid.Column="1" Text="BRO" Foreground="Black" FontSize="100"></TextBlock>
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="4"
+                   Fill="{fw:AcrylicBrush grid, NoiseOpacity=0, TintOpacity=0.5, TintColor=#BBD9FA}"
+                   Opacity="0.75"/>
+        <TextBlock Grid.Row="1"
+                   TextAlignment="Left"
+                   Grid.Column="1"
+                   Text="BRO"
+                   Foreground="Black"
+                   FontSize="100"/>
+        <Button Name="Button"
+                Background="AntiqueWhite"
+                Height="100"
+                Width="100"
+                Click="Test"
+                Grid.Column="2"
+                Grid.Row="1"/>
+        <TextBox Name="City"
+                 Grid.Row="2"
+                 Background="AntiqueWhite"
+                 Grid.Column="1"
+                 Height="100"
+                 Width="300"/>
     </Grid>
-        <!--<m:Map x:Name="myMap" CredentialsProvider="z7AbpdoLBt8nqpYryo2N~c6tlIiRrlFg76IlH-QcK4A~AsqFyXRBcegV2vSPSY1a4u6HfUfV9Aas4_YmG1NIrMu-TszR0F1PpRFHjfXGrWSD" Mode="Aerial"/>-->
+        <!--<m:Map x:Name="myMap"
+    CredentialsProvider="z7AbpdoLBt8nqpYryo2N~c6tlIiRrlFg76IlH-QcK4A~AsqFyXRBcegV2vSPSY1a4u6HfUfV9Aas4_YmG1NIrMu-TszR0F1PpRFHjfXGrWSD"
+    Mode="Aerial"/>-->
 </fw:AcrylicWindow>

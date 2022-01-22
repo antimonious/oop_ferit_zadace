@@ -68,6 +68,7 @@
     <Compile Include="ForecastUtilities.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="IRandomGenerator.cs" />
+    <Compile Include="LocationUtilities.cs" />
     <Compile Include="NoSuchDailyWeatherException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniformGenerator.cs" />
