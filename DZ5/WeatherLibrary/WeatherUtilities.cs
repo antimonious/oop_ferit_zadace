@@ -49,11 +49,11 @@ namespace WeatherLibrary
         {
             DailyForecastRepository dailyForecasts = new DailyForecastRepository();
 
-            foreach(Daily daily in openWeather.daily)
+            foreach (Daily daily in openWeather.daily)
                 dailyForecasts.Add(
                     new DailyForecast(
-                        new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(daily.dt-openWeather.timezone_offset).ToLocalTime(),
-                        new Weather(daily.temp.day, daily.humidity, daily.wind_speed*3.6)));
+                        new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(daily.dt).ToLocalTime(),
+                        new Weather(daily.temp.day, daily.humidity, daily.wind_speed * 3.6)));
 
             return dailyForecasts;
         }

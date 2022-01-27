@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using WeatherLibrary;
 
@@ -13,17 +14,20 @@ namespace WeatherApp
         {
             InitializeComponent();
 
+            Cursor = Cursors.AppStarting;
             Date1.Text = "Danas";
             Date2.Text = "Sutra";
             List<TextBlock> dates = new List<TextBlock>() { Date3, Date4, Date5, Date6, Date7, Date8 };
             for (int i = 0; i < dates.Count; i++)
                 dates[i].Text = DateTime.Now.AddDays(i+2).ToString("dd/MM");
+            Cursor = Cursors.Arrow;
         }
 
         private void SearchBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e) { SearchBar.Text = ""; }
 
         private void SearchResults_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Cursor = Cursors.Wait;
             WarningSign.Visibility = Visibility.Hidden;
             WarningDescription.Visibility = Visibility.Hidden;
             WarningDescription.Text = null;
@@ -52,8 +56,8 @@ namespace WeatherApp
                 foreach(Alert alert in openWeather.alerts)
                 {
                     if(alert.description != string.Empty)
-                        temp += $"Od {new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(alert.start - openWeather.timezone_offset).ToLocalTime().ToString("g")}" +
-                            $" do {new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(alert.end - openWeather.timezone_offset).ToLocalTime().ToString("g")}: " +
+                        temp += $"Od {new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(alert.start).ToLocalTime().ToString("g")}" +
+                            $" do {new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(alert.end).ToLocalTime().ToString("g")}: " +
                             $"{alert.description}.{Environment.NewLine}";
                 }
                 if (temp != string.Empty)
@@ -86,14 +90,17 @@ namespace WeatherApp
             SearchResults.Items.Clear();
 
             Credits.Visibility = Visibility.Visible;
+            Cursor = Cursors.Arrow;
         }
 
         private void SearchBar_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
+                Cursor = Cursors.Wait;
                 SearchResults.ItemsSource = LocationUtilities.GetLocation(SearchBar.Text);
                 SearchResults.Visibility = Visibility.Visible;
+                Cursor = Cursors.Arrow;
             }
         }
     }

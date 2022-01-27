@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:WeatherApp"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
@@ -15,7 +14,7 @@
     </fw:AcrylicWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="29"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -158,6 +157,7 @@
                  BorderBrush="Transparent"
                  UseLayoutRounding="True"
                  Text="Unesite adresu ovdje..."
+                 ToolTip="...i pritisnite Enter za pretraživanje"
                  PreviewMouseLeftButtonDown="SearchBar_MouseLeftButtonDown"
                  PreviewKeyDown="SearchBar_PreviewKeyDown"/>
         <ListView Name="SearchResults"
@@ -172,31 +172,34 @@
                   BorderBrush="Transparent"
                   HorizontalContentAlignment="Center"
                   SelectionMode="Single"
+                  ToolTip="Dvaput kliknite željenu adresu."
                   MouseDoubleClick="SearchResults_MouseDoubleClick"/>
         <TextBlock Name="WarningSign"
                    Text="Upozorenje!"
-                   Grid.Column="7"
-                   Grid.ColumnSpan="3"
+                   Grid.Column="6"
+                   Grid.ColumnSpan="4"
                    TextAlignment="Center"
-                   Grid.Row="4"
+                   Grid.Row="3"
+                   Grid.RowSpan="2"
                    FontSize="28"
                    Foreground="Black"
                    Visibility="Hidden"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
+                   VerticalAlignment="Center"
                    FontFamily="pack://application:,,,/Fonts/#Segoe UI Bold"/>
         <TextBlock Name="WarningDescription"
-                   Grid.Column="7"
-                   Grid.ColumnSpan="3"
-                   Grid.Row="5"
-                   Grid.RowSpan="3"
+                   Grid.Column="6"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="4"
+                   Grid.RowSpan="5"
                    FontSize="16"
                    TextAlignment="Center"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
+                   VerticalAlignment="Bottom"
                    Foreground="Black"
                    Visibility="Hidden"
                    TextWrapping="WrapWithOverflow"
+                   Margin="5, 5, 5, 5"
                    FontFamily="pack://application:,,,/Fonts/#Segoe UI Bold"/>
         <TextBlock Name="Date1"
                    Grid.Column="2"
