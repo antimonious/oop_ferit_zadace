@@ -106,6 +106,10 @@ namespace WeatherLibrary
             if (myDeserializedClass.status != "OK") throw new HttpRequestException();
 
             foreach (AddressComponent addressComponent in myDeserializedClass.results[0].address_components)
+                if (addressComponent.types.Contains("route"))
+                    return addressComponent.long_name;
+
+            foreach (AddressComponent addressComponent in myDeserializedClass.results[0].address_components)
                 if (addressComponent.types.Contains("locality"))
                     return addressComponent.long_name;
 

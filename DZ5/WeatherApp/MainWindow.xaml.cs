@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +12,8 @@ namespace WeatherApp
 {
     public partial class MainWindow
     {
+        private string address = null;
+        private string fileName = ".\\lastAddressRepos.txt";
         public MainWindow()
         {
             Cursor = Cursors.AppStarting;
@@ -19,7 +22,7 @@ namespace WeatherApp
             string initAddress = null;
             try
             {
-                using (StreamReader reader = new StreamReader(".\\lastAddressRepos.txt"))
+                using (StreamReader reader = new StreamReader(fileName))
                 {
                     initAddress = reader.ReadLine();
                 }
@@ -28,14 +31,18 @@ namespace WeatherApp
             catch
             {
                 initAddress = "Osijek, Hrvatska";
-                using (StreamWriter writer = new StreamWriter(".\\lastAddressRepos.txt"))
+                using (StreamWriter writer = new StreamWriter(fileName))
                 {
                     writer.WriteLine(string.Empty);
                 }
             }
 
             if(initAddress != null)
-                Reaction(initAddress);
+                this.address = initAddress;
+            else
+                address = "Osijek, Hrvatska";
+
+            Reaction(this.address);
 
             Date1.Text = "Danas";
             Date2.Text = "Sutra";
@@ -43,6 +50,8 @@ namespace WeatherApp
             for (int i = 0; i < dates.Count; i++)
                 dates[i].Text = DateTime.Now.AddDays(i+2).ToString("dd/MM");
             Cursor = Cursors.Arrow;
+
+            Task.Delay(new TimeSpan(0, 15, 0)).ContinueWith(o => Reaction(this.address));
         }
 
         private void SearchBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e) { SearchBar.Text = ""; }
@@ -54,13 +63,15 @@ namespace WeatherApp
             WarningDescription.Visibility = Visibility.Hidden;
             WarningDescription.Text = null;
 
-            Reaction(SearchResults.SelectedItem.ToString());
+            this.address = SearchResults.SelectedItem.ToString();
+            Console.WriteLine(this.address);
+            Reaction(this.address);
 
             try
             {
-                using (StreamWriter writer = new StreamWriter(".\\lastAddressRepos.txt", false))
+                using (StreamWriter writer = new StreamWriter(fileName, false))
                 {
-                    writer.WriteLine(SearchResults.SelectedItem.ToString());
+                    writer.WriteLine(this.address);
                 }
             }
             catch (Exception ex)
