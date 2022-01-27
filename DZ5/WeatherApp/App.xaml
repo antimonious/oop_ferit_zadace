@@ -5,6 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <FontFamily x:Key="SegoeUI">pack://application:,,,/Fonts/#Segoe UI</FontFamily>
+            <FontFamily x:Key="SegoeUILight">pack://application:,,,/Fonts/#Segoe UI Light</FontFamily>
+            <FontFamily x:Key="SegoeUIBold">pack://application:,,,/Fonts/#Segoe UI Bold</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <!--  FluentWPF Controls  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />

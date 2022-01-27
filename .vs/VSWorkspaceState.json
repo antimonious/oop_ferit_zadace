@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\DZ5",
-    "\\DZ5\\WeatherApp"
+    "\\DZ5\\WeatherApp",
+    "\\DZ5\\WeatherLibrary"
   ],
-  "SelectedNode": "\\DZ5\\WeatherApp\\MainWindow.xaml.cs",
+  "SelectedNode": "\\DZ5\\WeatherLibrary\\LocationUtilities.cs",
   "PreviewInSolutionExplorer": false
 }
