@@ -13,6 +13,7 @@ namespace WeatherApp
     {
         public MainWindow()
         {
+            Cursor = Cursors.AppStarting;
             InitializeComponent();
 
             string initAddress = null;
@@ -36,7 +37,6 @@ namespace WeatherApp
             if(initAddress != null)
                 Reaction(initAddress);
 
-            Cursor = Cursors.AppStarting;
             Date1.Text = "Danas";
             Date2.Text = "Sutra";
             List<TextBlock> dates = new List<TextBlock>() { Date3, Date4, Date5, Date6, Date7, Date8 };
@@ -72,7 +72,6 @@ namespace WeatherApp
             SearchResults.ItemsSource = null;
             SearchResults.Items.Clear();
 
-            Credits.Visibility = Visibility.Visible;
             Cursor = Cursors.Arrow;
         }
 
