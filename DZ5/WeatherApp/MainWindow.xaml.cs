@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using WeatherLibrary;
 
 namespace WeatherApp
@@ -14,9 +15,12 @@ namespace WeatherApp
     {
         private string address = null;
         private string fileName = ".\\lastAddressRepos.txt";
+        private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             Cursor = Cursors.AppStarting;
+            timer.Tick += OnTimedEvent;
+            timer.Interval = TimeSpan.FromMinutes(15);
             InitializeComponent();
 
             string initAddress = null;
@@ -40,31 +44,31 @@ namespace WeatherApp
             if(initAddress != null)
                 this.address = initAddress;
             else
-                address = "Osijek, Hrvatska";
-
-            Reaction(this.address);
+                this.address = "Osijek, Hrvatska";
 
             Date1.Text = "Danas";
             Date2.Text = "Sutra";
             List<TextBlock> dates = new List<TextBlock>() { Date3, Date4, Date5, Date6, Date7, Date8 };
             for (int i = 0; i < dates.Count; i++)
                 dates[i].Text = DateTime.Now.AddDays(i+2).ToString("dd/MM");
-            Cursor = Cursors.Arrow;
 
-            Task.Delay(new TimeSpan(0, 15, 0)).ContinueWith(o => Reaction(this.address));
+            Reaction(this.address);
+            timer.Start();
+            Cursor = Cursors.Arrow;
         }
+
+        private void OnTimedEvent(object sender, EventArgs e) { Reaction(this.address); }
 
         private void SearchBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e) { SearchBar.Text = ""; }
 
         private void SearchResults_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Cursor = Cursors.Wait;
+            timer.Stop();
             WarningSign.Visibility = Visibility.Hidden;
             WarningDescription.Visibility = Visibility.Hidden;
             WarningDescription.Text = null;
 
             this.address = SearchResults.SelectedItem.ToString();
-            Console.WriteLine(this.address);
             Reaction(this.address);
 
             try
@@ -82,8 +86,7 @@ namespace WeatherApp
             SearchResults.Visibility = Visibility.Hidden;
             SearchResults.ItemsSource = null;
             SearchResults.Items.Clear();
-
-            Cursor = Cursors.Arrow;
+            timer.Start();
         }
 
         private void SearchBar_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -99,6 +102,8 @@ namespace WeatherApp
 
         private void Reaction(string address)
         {
+            Cursor = Cursors.Wait;
+
             int i;
 
             OpenWeather openWeather = WeatherUtilities.GetWeather(address);
@@ -151,6 +156,17 @@ namespace WeatherApp
                 dailyFeel[i].Text = daily.Weather.CalculateFeelsLikeTemperature().ToString("F0");
                 i++;
             }
+
+            RefreshInfo.Text = $"Podaci ažurirani u: {DateTime.Now.ToString("G")}";
+
+            Cursor = Cursors.Arrow;
+        }
+
+        private void ForceRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            Reaction(this.address);
+            timer.Start();
         }
     }
 }
