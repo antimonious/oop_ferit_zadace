@@ -63,14 +63,22 @@ namespace WeatherLibrary
             List<BitmapImage> icons = new List<BitmapImage>();
             string uri = "http://openweathermap.org/img/wn/";
 
-            icons.Add(
-                new BitmapImage(
-                    new Uri(uri + $"{openWeather.current.weather[0].icon}@2x.png", UriKind.RelativeOrAbsolute)));
-
-            foreach(Daily daily in openWeather.daily)
+            try
+            {
                 icons.Add(
                     new BitmapImage(
-                        new Uri(uri + $"{daily.weather[0].icon}.png", UriKind.RelativeOrAbsolute)));
+                        new Uri(uri + $"{openWeather.current.weather[0].icon}@2x.png", UriKind.RelativeOrAbsolute)));
+
+                foreach (Daily daily in openWeather.daily)
+                    icons.Add(
+                        new BitmapImage(
+                            new Uri(uri + $"{daily.weather[0].icon}.png", UriKind.RelativeOrAbsolute)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw new HttpRequestException();
+            }
 
             return icons;
         }
