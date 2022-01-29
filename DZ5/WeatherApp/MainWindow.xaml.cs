@@ -34,7 +34,7 @@ namespace WeatherApp
             refreshTimer.Tick += OnTimedEvent;
             dateTimer.Tick += DateTimedEvent;
             refreshTimer.Interval = TimeSpan.FromMinutes(15);
-            dateTimer.Interval = DateTime.Today.AddDays(1) - DateTime.Now;
+            dateTimer.Interval = DateTime.Today.AddDays(1).AddSeconds(228) - DateTime.Now;
             dateTimer.Start();
 
             InitializeComponent();
