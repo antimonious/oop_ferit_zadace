@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -37,7 +36,7 @@ namespace WeatherApp
                 initAddress = "Osijek, Hrvatska";
                 using (StreamWriter writer = new StreamWriter(fileName))
                 {
-                    writer.WriteLine(string.Empty);
+                    writer.WriteLine(initAddress);
                 }
             }
 
