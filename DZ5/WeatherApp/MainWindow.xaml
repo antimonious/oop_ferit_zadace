@@ -223,7 +223,8 @@
                    Foreground="Black"
                    Visibility="Hidden"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0, 15, 0, 0"
                    FontFamily="pack://application:,,,/Fonts/#Segoe UI Bold"/>
         <TextBlock Name="WarningDescription"
                    Grid.Column="6"
@@ -233,11 +234,11 @@
                    FontSize="16"
                    TextAlignment="Center"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
+                   VerticalAlignment="Top"
                    Foreground="Black"
                    Visibility="Hidden"
                    TextWrapping="WrapWithOverflow"
-                   Margin="5, 5, 5, 5"
+                   Margin="5, 30, 5, 5"
                    FontFamily="pack://application:,,,/Fonts/#Segoe UI Bold"/>
         <TextBlock Name="Date1"
                    Grid.Column="2"
