@@ -103,11 +103,7 @@ namespace WeatherLibrary
             }
 
             GoogleMaps myDeserializedClass = JsonConvert.DeserializeObject<GoogleMaps>(requestResult);
-            if (myDeserializedClass.status != "OK") throw new HttpRequestException();
-
-            foreach (AddressComponent addressComponent in myDeserializedClass.results[0].address_components)
-                if (addressComponent.types.Contains("route"))
-                    return addressComponent.long_name;
+            if (!myDeserializedClass.status.Equals("OK")) throw new HttpRequestException();
 
             foreach (AddressComponent addressComponent in myDeserializedClass.results[0].address_components)
                 if (addressComponent.types.Contains("locality"))
